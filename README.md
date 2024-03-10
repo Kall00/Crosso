@@ -1,2 +1,2 @@
 # Crosso
-A simple tic tac toe game
+A simple Tic Tac Toe game
