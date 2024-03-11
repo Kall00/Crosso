@@ -1,0 +1,66 @@
+:root {
+  --colorprimary: #00001c;
+  --coloronprimary: #A020F0;
+  --colorplayer1: #00ba00;
+  --colorplayer2: #FFF000;
+}
+
+body{
+  background-color: var(--colorprimary);
+  color: var(--coloronprimary);
+  width: 100dvw;
+  height: 90dvh;
+  margin: 0;
+  padding: 0px 5px; 
+  font-size: 2dvh;
+}
+
+img {
+  width: 8dvw;
+  height: 8dvh;
+  margin-right: 1dvw;
+}
+
+.board {
+  height:100%;
+}
+
+.score{
+  display: flex;
+  justify-content: space-between;
+  font-size: 3dvh;
+}
+
+.player1{
+  color: var(--colorplayer1);
+}
+
+.player2{
+  color: var(--colorplayer2);
+}
+
+.main{
+  width: 100%;
+  height: 100%;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(3,32dvw);
+  grid-template-rows: repeat(3,32dvw);
+  text-align: center;
+}
+
+.box{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10dvh;
+  border: 1px solid var(--coloronprimary);
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}

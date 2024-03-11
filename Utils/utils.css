@@ -1,0 +1,10 @@
+.neon-purple{
+  color: #A020F0;
+  text-shadow: 0 0 5px #A020F0;
+}
+
+.centre{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
