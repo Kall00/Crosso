@@ -3,6 +3,11 @@
   text-shadow: 0 0 5px #A020F0;
 }
 
+.neon-blue{
+  color: #00c4ff;
+  text-shadow: 0 0 5px #00c4ff;
+}
+
 .centre{
   display: flex;
   justify-content: center;

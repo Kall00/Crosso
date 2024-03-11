@@ -13,6 +13,7 @@ body{
   margin: 0;
   padding: 0px 5px; 
   font-size: 2dvh;
+  user-select: none;
 }
 
 img {
@@ -57,10 +58,23 @@ img {
   align-items: center;
   font-size: 10dvh;
   border: 1px solid var(--coloronprimary);
+  box-shadow: 0 0 0 5px var(--coloronprimary);
+  curosr: pointer;
 }
 
 .footer{
   display: flex;
   justify-content: center;
   padding: 5px;
+}
+
+.notify{
+  margin: 0 auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top: 25dvh;
+  font-size: 5dvw;
+  font-weight: bold;
 }
