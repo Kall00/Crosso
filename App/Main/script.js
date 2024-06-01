@@ -3,25 +3,33 @@ let player2 = "player 2";
 let player1Score = 0;
 let player2Score = 0;
 let player1Turn = true;
+let winner = " ";
 
-function showNoti(winner){
+function showNoti(){
   let notify = document.querySelector(".notify");
   if (winner =="draw"){
-    notify.innerHTML = "Draw ðŸ˜…";
+    notify.innerHTML = "Draw 😅";
   }else{
-    notify.innerHTML = `${winner} wins the game ðŸŽ‰`;
+    notify.innerHTML = `${winner} wins the game 🎉`;
   }
   notify.style.display = "inline";
   setTimeout(() => {
     notify.style.display = "none";
-  }, 2000);
+
+    // updating the score
+    updateScore();
+    
+    // resetting the board
+    resetBoard();
+    
+  }, 1400);
 }
 
-function updateScore(winner){
-  if (winnner == player1){
+function updateScore(){
+  if (winner == player1){
     document.querySelector(".player1").innerHTML = `Player 1: ${++player1Score}`;
   }else if (winner == player2){
-    doucment.querySelector(".player2").innerHTML = `Player 2: ${++player2Score}`;
+    document.querySelector(".player2").innerHTML = `Player 2: ${++player2Score}`;
 }
 }
 
@@ -29,46 +37,67 @@ function resetBoard(){
 Array.from(document.getElementsByClassName('box')).forEach(box => {
   box.innerHTML = "";
 });
+
+  // reset winner variable
+  winner = " ";
 }
 
 function isbingo(){
-  let bingo = false;
   let draw = true;
-  let winner = "";
+
+ // deciding the winner
+  check_winner();
 
 
+  if (winner != " "){
+    
+    // showing notification
+    showNoti();
 
-  if (bingo){
-   // resetting the board
-  resetBoard();
-  // updating the score
-  updateScore(winner);
-    // showing winner
-    showNoti(winner);
-  // resetting the turn
+    // resetting the turn
   player1Turn = true;
+    
   }
 
   // checking for draw
-  Array.from(document.getElementsByClassName('box')).forEach(box => {
+
+  if (winner == " "){
+    Array.from(document.getElementsByClassName('box')).forEach(box => {
   if (box.innerHTML == ""){
     draw = false;
-  }else{
-    draw = true;
   }
 });
 
   if (draw){
-    // resetting the board
-    resetBoard();
-    // updating the score
-    updateScore("draw");
     // showing winner
-    showNoti("draw");
+    winner = "draw";
+    showNoti();
     // resetting the turn
     player1Turn = true;
   }
+    
+  }
 
+}
+
+function check_winner(){
+
+  let winning_combinations =
+    [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+
+  // checking if any of 3 combined positions contains either whole x or 0
+
+  for (let i = 0; i < winning_combinations.length; i++){
+    let [a,b,c] = winning_combinations[i];
+    if (document.getElementsByClassName('box')[a].innerHTML == "X" && document.getElementsByClassName('box')[b].innerHTML == "X" && document.getElementsByClassName('box')[c].innerHTML == "X"){
+      winner = player1; 
+      break;
+    } else if(document.getElementsByClassName('box')[a].innerHTML == "O" && document.getElementsByClassName('box')[b].innerHTML == "O" && document.getElementsByClassName('box')[c].innerHTML == "O"){
+      winner = player2;
+      break;
+    }
+  }
+  
 }
 
 // click event for putting X or O
@@ -78,7 +107,7 @@ Array.from(boxes).forEach(element => { element.addEventListener('click', (e) => 
 
 
   //disabling the click
-  if(e.target.innerText!= ""){
+  if(e.target.innerText!= "" || winner!= " "){
     return;
   }
 
